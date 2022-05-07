@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import Image from 'next/image'
 import { useEffect, useState } from "react"
 import { useRouter } from 'next/router'
 import Appbar from "../components/appbar"
@@ -12,27 +11,26 @@ export default function Home() {
 
   //user verification status using the token
   useEffect(() => {
-    return () => {
-      setpage({ ...Page, loading: true })
-      fetch("api/token", {
-        method: "POST",
-        headers: {
-          contentType: "application.json",
-        }, body: JSON.stringify({ token: localStorage.getItem('token') })
+    setpage({ ...Page, loading: true })
+    fetch("api/token", {
+      method: "POST",
+      headers: {
+        contentType: "application.json",
+      }, body: JSON.stringify({ token: localStorage.getItem('token') })
+    })
+      .then(res => res.json())
+      .then(res => {
+        console.log(res)
+        if (res.success) {
+          setUsername(() => res.data[0].name)
+          setpage({ ...Page, loading: false, Message: res.message })
+        }
+        else {
+          router.push('/login')
+        }
       })
-        .then(res => res.json())
-        .then(res => {
-          console.log(res)
-          if (res.success) {
-            setUsername(() => res.data[0].name)
-            setpage({ ...Page, loading: false, Message: res.message })
-          }
-          else {
-            router.push('/login')
-          }
-        })
-    }
-  }, [])
+  }
+    , [])
 
   if (Page.loading) { return <h1>loading....</h1> }
   return (
