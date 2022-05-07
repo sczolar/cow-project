@@ -7,11 +7,12 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Image from "next/image"
 
-export default function ImgMediaCard() {
+
+export default function ImgMediaCard({ link }) {
     return (
         <Card sx={{ maxWidth: 300 }}>
             <CardMedia height="140">
-                <Image src={`/cow1.jpg`} width="300" height="220"></Image>
+                <Image src={`/${link}`} width="300" height="220"></Image>
             </CardMedia>
             <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
