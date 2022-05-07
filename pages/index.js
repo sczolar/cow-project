@@ -6,29 +6,33 @@ import Cards from "../components/card"
 
 export default function Home() {
   const router = useRouter()
-  const [Page, setpage] = useState({ loading: false, Message: "" })
+  const [Page, setpage] = useState({ loading: true, Message: "" })
   const [username, setUsername] = useState("")
 
   //user verification status using the token
   useEffect(() => {
-    setpage({ ...Page, loading: true })
-    fetch("api/token", {
-      method: "POST",
-      headers: {
-        contentType: "application.json",
-      }, body: JSON.stringify({ token: localStorage.getItem('token') })
-    })
-      .then(res => res.json())
-      .then(res => {
-        console.log(res)
-        if (res.success) {
-          setUsername(() => res.data[0].name)
-          setpage({ ...Page, loading: false, Message: res.message })
-        }
-        else {
-          router.push('/login')
-        }
+    try {
+      setpage({ ...Page, loading: true })
+      fetch("api/token", {
+        method: "POST",
+        headers: {
+          contentType: "application.json",
+        }, body: JSON.stringify({ token: localStorage.getItem('token') })
       })
+        .then(res => res.json())
+        .then(res => {
+          console.log(res)
+          if (res.success) {
+            setUsername(() => res.data[0].name)
+            setpage({ ...Page, loading: false, Message: res.message })
+          }
+          else {
+            router.push('/login')
+          }
+        })
+    } catch (error) {
+      setpage({ ...Page, loading: false, Message: error.message })
+    }
   }
     , [])
 
