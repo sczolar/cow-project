@@ -4,6 +4,7 @@ import { useState } from "react"
 import { useRouter } from "next/router"
 import Head from 'next/head'
 
+
 export default function Login() {
     const router = useRouter();
     const [Page, setpage] = useState({ loading: false, Message: "" })
@@ -71,7 +72,7 @@ export default function Login() {
                         value={login.password}
                         type="password"
                     />
-                    <Button variant="contained" onClick={submithandler}>Login</Button>
+                    <Button className='loginbtn' variant="contained" onClick={submithandler}>Login</Button>
                 </form>
             </div>
         </div>

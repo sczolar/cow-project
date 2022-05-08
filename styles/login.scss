@@ -9,20 +9,49 @@
     flex-direction: column
 }
 
+$loginbg :#00ddb3;
+
 .login {
     @include center;
     width: 100%;
     height: 100vh;
+    background-image: url('/loginbg.jpg');
+    background-position: 80% 20%;
+    background-size: cover;
 
     .login-body {
-        border: 1px solid gray;
-        padding: 20px;
+        color: rgb(14, 14, 14);
+        backdrop-filter: blur(5px);
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: -1px 1px 5px rgb(77, 77, 77);
         @include center-col;
+
+        h1 {
+            position: relative;
+
+            &:before {
+                content: '';
+                position: absolute;
+                width: 40px;
+                height: 4px;
+                background-color: $loginbg;
+                bottom: -5px;
+                border-radius: 2px;
+            }
+        }
 
         form {
             @include center-col;
+           color: whitesmoke;
             &>* {
                 margin-top: 20px;
+            }
+
+            .loginbtn {
+                background-color: $loginbg;
+                color: black;
+                font-weight: 600;
             }
         }
     }
