@@ -1,8 +1,8 @@
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { useState } from "react"
-import { useRouter } from "next/router"
-import Head from 'next/head'
+import { useRouter } from "next/router";
+import Head from 'next/head';
 
 
 export default function Login() {
@@ -63,6 +63,8 @@ export default function Login() {
                         onChange={loginhandler}
                         value={login.username}
                         type="text"
+                        color="primary"
+                        className="login-text"
                     />
                     <TextField
                         label="Password"
@@ -71,6 +73,8 @@ export default function Login() {
                         onChange={loginhandler}
                         value={login.password}
                         type="password"
+                        color="primary"
+                        className="login-text"
                     />
                     <Button className='loginbtn' variant="contained" onClick={submithandler}>Login</Button>
                 </form>
