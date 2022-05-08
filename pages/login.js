@@ -52,7 +52,7 @@ export default function Login() {
                 <title>Login</title>
                 <meta name="description" content="login page" />
             </Head>
-            <span>{Page.Message}</span>
+            {Page.Message && <span className="error-msg">{Page.Message}</span>}
             <div className="login-body">
                 <h1>login</h1>
                 <form>

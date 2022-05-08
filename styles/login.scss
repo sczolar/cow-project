@@ -12,12 +12,22 @@
 $loginbg :#00ddb3;
 
 .login {
-    @include center;
+    @include center-col;
     width: 100%;
     height: 100vh;
     background-image: url('/loginbg.jpg');
     background-position: 80% 20%;
     background-size: cover;
+
+    .error-msg {
+        background-color: rgba(255, 99, 71, 0.479);
+        padding: 10px 20px;
+        border-radius: 7px;
+        margin: 20px;
+        text-transform: capitalize;
+        font-weight: 600;
+        backdrop-filter: blur(5px);
+    }
 
     .login-body {
         color: rgb(14, 14, 14);
@@ -43,7 +53,8 @@ $loginbg :#00ddb3;
 
         form {
             @include center-col;
-           color: whitesmoke;
+            color: whitesmoke;
+
             &>* {
                 margin-top: 20px;
             }
@@ -53,10 +64,12 @@ $loginbg :#00ddb3;
                 color: black;
                 font-weight: 600;
             }
-            .login-text{
+
+            .login-text {
                 color: white;
             }
-            label{
+
+            label {
                 font-weight: 600;
             }
         }
