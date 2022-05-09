@@ -67,7 +67,7 @@ export default function ButtonAppBar(props) {
                             <MenuIcon />
                         </IconButton>
                         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                            {(props.name).toUpperCase()}
+                            {(props.name)}
                         </Typography>
                         <Button color="inherit" onClick={() => {
                             localStorage.clear()
